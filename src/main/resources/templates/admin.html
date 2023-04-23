@@ -46,7 +46,7 @@
                 <td th:text="${ord.getNumber()}"></td>
                 <td th:text="${ord.getStatus()}"></td>
                 <td th:text="${#temporals.format(ord.getDateTime(),'dd-MM-yyyy')}"></td>
-                <td th:text="${ord.getPrice()}"></td>
+                <td th:text="${ord.getPrice()} + ' руб.'"></td>
                 <td th:text="${ord.getPerson().getUsername()}"></td>
             </tr>
         </div>
@@ -57,7 +57,7 @@
         <tr><th>Номер заказа</th><th>Статус</th><th>Дата</th><th>Стоимость</th></tr>
         <div th:each="order : ${orders}">
             <tr>
-                <form th:method="GET" th:action="@{/admin/view_orders/{id}(id=${order.getPerson().getId()})}">
+                <form th:method="POST" th:action="@{/admin/view_orders/{id}(id=${order.getPerson().getId()})}">
                     <td hidden="hidden"><input type="text" readonly th:name="order_id" id="order_id" th:value="${order.getId()}" hidden="hidden"></td>
                     <td><input type="text" readonly style="width: 250px" th:name="order_number" id="order_number" th:value="${order.getNumber()}"></td>
                     <td>
@@ -66,9 +66,9 @@
                         </select>
                     </td>
                     <td><input type="text" readonly th:value="${#temporals.format(order.getDateTime(),'dd-MM-yyyy')}"></td>
-                    <td><input type="text" readonly th:value="${order.getPrice()}"></td>
+                    <td><input type="text" readonly th:value="${order.getPrice()} + ' руб.'"></td>
                     <td>
-                        <a th:href="@{admin/view_orders/admin/delete_order/{idOrder}(idOrder=${order.getId()})}">Удалить</a>
+                        <a style="text-decoration: none; color: indianred;" th:href="@{admin/view_orders/admin/delete_order/{idOrder}(idOrder=${order.getId()})}">Удалить</a>
                     </td>
                     <td><input type="submit" value="Сохранить"></td>
                 </form>
@@ -78,7 +78,7 @@
 </fieldset>
 <h3 style="text-align: center;" >Работа с товарами</h3>
 <div style="text-align: center">
-    <a style="text-decoration: none; color: royalblue; text-align: center;" href="admin/product/add">Добавить товар</a>
+    <a style="text-decoration: none; color: royalblue; text-align: center; font-size: 20px;" href="admin/product/add">Добавить товар</a>
 </div>
 <div style="display: grid; grid-template-columns: repeat(3,1fr);">
     <div style="margin-top: 10px; margin-left: auto; margin-right: auto; width: 500px; padding: 15px; border: 2px solid darkseagreen; border-radius:20px; background-color: white;" th:each="product : ${products}">
@@ -93,7 +93,7 @@
             <a style="text-decoration: none; color: royalblue;" th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактирование товара</a><br><br>
         </div>
         <div style="text-align: center; padding: 5px;">
-            <a style="text-decoration: none; color: royalblue;" th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удаление товара</a>
+            <a style="text-decoration: none; color: indianred;" th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удаление товара</a>
         </div>
     </div>
 </div>

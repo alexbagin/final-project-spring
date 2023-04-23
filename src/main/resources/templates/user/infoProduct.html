@@ -12,19 +12,21 @@
     </style>
 </head>
 <body>
-<form method="GET" th:action="@{/product}">
+<form method="GET" th:action="@{/index}">
     <button style="font-size: 15px" type="submit">Главная страница</button>
 </form>
 <br>
-<h3>Информация о товаре: </h3>
-<p th:text="'Наименование: ' + ${product.getTitle()}"></p>
-<p th:text="'Описание: ' + ${product.getDescription()}"></p>
-<p th:text="'Цена: ' + ${product.getPrice()}"></p>
-<p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
-<p th:text="'Продавец: ' + ${product.getSeller()}"></p>
-<p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
-<div th:each="img : ${product.getImageList()}">
-    <img th:src="'/img/' + ${img.getFileName()}" width="300px">
+<div style="margin: 10px auto; padding: 20px; width: 1400px; border: 1px solid darkseagreen; border-radius:10px; background-color: white;">
+    <h3>Информация о товаре: </h3>
+    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
+    <p th:text="'Описание: ' + ${product.getDescription()}"></p>
+    <p th:text="'Цена: ' + ${product.getPrice()} + ' руб.'"></p>
+    <p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
+    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+    <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+    <div th:each="img : ${product.getImageList()}">
+        <img th:src="'/img/' + ${img.getFileName()}" width="500px">
+    </div>
 </div>
 </body>
 </html>

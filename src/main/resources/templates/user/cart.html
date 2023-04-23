@@ -16,16 +16,21 @@
     <button style="font-size: 15px" type="submit">Главная страница</button>
 </form>
 <br>
-<h3>Корзина товаров</h3>
-<div th:each="product : ${cart_product}">
-    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="150px">
-    <br>
-    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
-    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
-    <a th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить товар</a>
-    <hr>
+<div style="margin: 10px auto; padding: 20px; width: 1400px; border: 1px solid darkseagreen; border-radius:10px; background-color: white;">
+    <h3 style="text-align: center;">Корзина товаров</h3>
+    <div th:each="product : ${cart_product}">
+        <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="150px">
+        <br>
+        <a style="text-decoration: none; color: royalblue; font-size: 15px;" th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+        <p th:text="'Цена: ' + ${product.getPrice()} + ' руб.'"></p>
+        <div style="text-align: left">
+            <a style="text-decoration: none; color: indianred; font-size: 15px;" th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+        </div>
+    </div>
+    <h3 th:text="'Итоговая цена: ' + ${price} + ' руб.'"></h3>
+    <div style="text-align: center">
+        <a style="text-decoration: none; color: royalblue; font-size: 20px;" href="/order/create">Заказать</a>
+    </div>
 </div>
-<h3 th:text="'Итоговая цена: ' + ${price}"></h3>
-<a href="/order/create">Заказать</a>
 </body>
 </html>
