@@ -1,9 +1,9 @@
-package com.example.springsecurityapplication.config;
+package com.example.finalproject.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.example.springsecurityapplication.util")
+@ComponentScan("com.example.finalproject.util")
 public class SpringConfig {
 }

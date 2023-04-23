@@ -1,8 +1,7 @@
-package com.example.springsecurityapplication.util;
+package com.example.finalproject.util;
 
-import com.example.springsecurityapplication.models.Person;
-import com.example.springsecurityapplication.services.PersonService;
-import org.springframework.context.annotation.ComponentScan;
+import com.example.finalproject.models.Person;
+import com.example.finalproject.services.PersonService;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

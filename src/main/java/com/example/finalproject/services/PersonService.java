@@ -1,7 +1,7 @@
-package com.example.springsecurityapplication.services;
+package com.example.finalproject.services;
 
-import com.example.springsecurityapplication.models.Person;
-import com.example.springsecurityapplication.repositories.PersonRepository;
+import com.example.finalproject.models.Person;
+import com.example.finalproject.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,5 +30,10 @@ public class PersonService {
         person.setPassword(passwordEncoder.encode(person.getPassword()));
         person.setRole("ROLE_USER");
         personRepository.save(person);
+    }
+
+    public Person getPersonId(int id){
+        Optional<Person> optionalPerson = personRepository.findById(id);
+        return optionalPerson.orElse(null);
     }
 }

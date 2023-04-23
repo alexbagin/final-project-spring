@@ -1,7 +1,6 @@
-package com.example.springsecurityapplication.security;
+package com.example.finalproject.security;
 
-import com.example.springsecurityapplication.models.Person;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.finalproject.models.Person;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
