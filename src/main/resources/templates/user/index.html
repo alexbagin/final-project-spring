@@ -73,6 +73,9 @@
             <a style="text-decoration: none; color: royalblue; font-size: 15px;" th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
         </div>
         <p style="text-align: center; font-size: 15px;" th:text="'Цена: ' + ${product.getPrice()} + ' руб.'"></p>
+        <div style="text-align: center">
+            <a style="text-decoration: none; color: forestgreen; font-size: 15px;" th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить товар в корзину</a>
+        </div>
     </div>
 </div>
 <hr>
