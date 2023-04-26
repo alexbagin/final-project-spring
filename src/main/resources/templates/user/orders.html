@@ -23,7 +23,7 @@
     </div>
 </nav>
 <div class="container mt-3 border border-success rounded">
-    <h4 class="text-center mt-3">Заказы</h4>
+    <h5 class="text-center mt-3">Заказы</h5>
     <div th:each="order : ${orders}">
         <h6 th:text="'Заказ №' + ${order.getNumber()}"></h6>
         <img th:src="'/img/' + ${order.getProduct().getImageList()[0].getFileName()}" width="100px">

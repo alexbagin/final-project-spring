@@ -4,29 +4,35 @@
     <meta charset="UTF-8">
     <title>Информация о товаре</title>
     <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
-    <style>
-        body {
-            font-family: "Malgun Gothic";
-            background-color: aliceblue;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-<form method="GET" th:action="@{/product}">
-    <button style="font-size: 15px" type="submit">Главная страница</button>
-</form>
-<br>
-<div style="margin: 10px auto; padding: 20px; width: 1400px; border: 1px solid darkseagreen; border-radius:10px; background-color: white;">
-    <h3>Информация о товаре: </h3>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid  justify-content-start">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/images/icon.png}" width="50" height="50" class="d-inline-block align-text-center">
+            ПродуктыОнлайн
+        </a>
+        <form method="GET" th:action="@{/product}">
+            <button class="btn btn-outline-primary me-md-2" type="submit">Каталог</button>
+        </form>
+    </div>
+</nav>
+<div class="container mt-3 border border-success rounded">
+    <h5 class="text-center mt-3">Информация о товаре:</h5>
     <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
     <p th:text="'Описание: ' + ${product.getDescription()}"></p>
     <p th:text="'Цена: ' + ${product.getPrice()} + ' руб.'"></p>
     <p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
     <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
     <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
-    <div th:each="img : ${product.getImageList()}">
-        <img th:src="'/img/' + ${img.getFileName()}" width="500px">
+    <div class="row row-cols-1 row-cols-md-3 mb-3">
+        <div class="col" th:each="img : ${product.getImageList()}">
+            <img th:src="'/img/' + ${img.getFileName()}" width="350px" alt="Изображение отсутствует">
+        </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
